@@ -3,424 +3,635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aviral Jain - Backend Python Developer</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <title>Aviral Kesari - Software Developer</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
     <style>
-        /* Custom global styles */
+        /* --- Global Dark Theme Styles --- */
         body {
-            font-family: 'Inter', sans-serif;
-            /* New background gradient inspired by reference */
-            background-image: linear-gradient(180deg, #f0f4f8 0%, #d9e2ec 100%); /* Light blue/gray gradient */
-            color: #2d3748; /* text-gray-800 */
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            background-color: #121212; /* Main dark background */
+            color: #E0E0E0; /* Light grey for default text */
+            font-family: 'Poppins', sans-serif;
+            padding-top: 70px; /* Account for fixed navbar */
         }
 
-        /* Animation: Fade in */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .fade-in {
-            animation: fadeIn 1s ease-out forwards;
+        h1, h2, h3, h4, h5, h6 {
+            color: #FFFFFF; /* White for headings */
         }
 
-        /* Animation: Fade in up */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        a {
+            color: #61dafb; /* Accent color for links */
+            text-decoration: none;
         }
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        
-        /* Staggered animation for hero text */
-        .hero-text-animate > * {
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out forwards;
-        }
-        .hero-text-animate > *:nth-child(1) { animation-delay: 0.2s; }
-        .hero-text-animate > *:nth-child(2) { animation-delay: 0.4s; }
-        .hero-text-animate > *:nth-child(3) { animation-delay: 0.6s; }
-        .hero-text-animate > *:nth-child(4) { animation-delay: 0.8s; }
-
-        /* Scroll-triggered animations */
-        .scroll-animate {
-            opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        a:hover {
+            color: #8EFBFF; /* Lighter on hover */
+            text-decoration: underline;
         }
 
-        .scroll-animate.in-view {
-            opacity: 1;
-            transform: translateY(0);
+        .section {
+            padding: 80px 0;
+        }
+        .section-bg-darker {
+             background-color: #1a1a1a; /* Slightly different dark shade for some sections */
         }
 
-        /* Custom gradient text */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
+        .card {
+            background-color: #1e1e1e; /* Dark background for cards */
+            border: 1px solid #333;
+            color: #E0E0E0;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .card-title {
+            color: #FFFFFF;
+        }
+        .card-text .text-muted {
+            color: #a0a0a0 !important;
         }
 
-        /* Smooth scroll */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom button style */
         .btn-primary {
-            @apply inline-block px-8 py-3 bg-teal-500 text-white font-semibold rounded-lg shadow-lg hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
+            background-color: #007bff;
+            border-color: #007bff;
+            color: #FFFFFF;
+            padding: 10px 20px;
+            font-weight: 600;
         }
-        .btn-secondary {
-            @apply inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75;
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
         }
-        
-        /* Card effect for light theme */
-        .light-card {
-            background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px); /* Safari */
-            border: 1px solid rgba(0, 0, 0, 0.08); /* Slightly more visible border */
-            border-radius: 20px; /* More rounded */
-            box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.12); /* Enhanced shadow */
+        .btn-outline-light {
+            color: #f8f9fa;
+            border-color: #f8f9fa;
         }
-
-        /* Custom list style for Areas of Interest */
-        .interest-list li {
-            @apply bg-white p-5 rounded-xl shadow-md border border-gray-200 mb-4 transition-all duration-300 hover:shadow-lg hover:border-teal-400 transform hover:-translate-y-1;
-        }
-        .interest-list li strong {
-            @apply text-teal-700; /* Darker teal for better contrast on white */
+        .btn-outline-light:hover {
+            color: #121212;
+            background-color: #f8f9fa;
+            border-color: #f8f9fa;
         }
 
-        /* Game Styles */
-        #game-container {
-            width: 100%;
-            max-width: 500px;
-            height: 350px;
-            background-color: #e2e8f0; /* bg-slate-200 */
-            border: 2px solid #94a3b8; /* border-slate-400 */
-            position: relative;
-            border-radius: 12px;
+        /* --- Navbar --- */
+        .navbar {
+            background-color: #1f1f1f !important; /* Dark navbar */
+            border-bottom: 1px solid #333;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+        .navbar-brand {
+            color: #FFFFFF !important;
+            font-weight: 700;
+        }
+        .navbar-nav .nav-link {
+            color: #E0E0E0 !important;
+            margin-left: 15px;
+            font-weight: 400;
+        }
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #61dafb !important; /* Accent color */
+        }
+        .navbar-toggler {
+            border-color: rgba(255,255,255,0.1);
+        }
+        .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(224, 224, 224, 0.8)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+        }
+
+
+        /* --- Hero Section & Headline Animation --- */
+        #hero {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.8)), url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover; /* Example background image */
+        }
+        #hero .display-4 {
+             font-weight: 700;
+             margin-bottom: 0.5rem;
+        }
+         #animated-subheadline-container {
+            min-height: 2.5em; /* Adjust based on your text size */
+            margin-top: 1rem;
+            margin-bottom: 2rem;
+        }
+        #animated-subheadline-container .lead {
+            font-size: 1.75rem; /* Larger animated text */
+            font-weight: 300;
+            color: #c0c0c0;
+        }
+        #animated-text {
+            font-weight: 600;
+            color: #61dafb; /* Accent color for animated part */
+            border-right: 3px solid #61dafb; /* Blinking cursor */
+            white-space: nowrap;
             overflow: hidden;
-            margin: auto;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: inline-block;
+            vertical-align: bottom;
+            letter-spacing: 1px;
         }
-        #target {
-            width: 50px;
-            height: 50px;
-            background-color: #f56565; /* bg-red-500 */
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #61dafb; }
+        }
+
+        /* --- 1. Who Am I Section (Square Removal) --- */
+        #about .profile-card {
+            border: none !important;
+            box-shadow: none !important;
+            background-color: transparent !important; /* Ensure no card background creates a square */
+            text-align: left;
+        }
+        #about img.profile-pic {
+            width: 200px; /* Adjust size as needed */
+            height: 200px;
             border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #333;
+            margin-bottom: 20px;
+        }
+
+        /* --- 2. Experience Section (Paperpal Highlight) --- */
+        .experience-item .card-title .text-muted,
+        .experience-item .card-text .text-muted {
+            font-size: 0.9em;
+        }
+        .paperpal-features-list {
+            padding-left: 0; /* Remove default ul padding */
+            list-style: none; /* Remove default list bullets */
+        }
+        .paperpal-features-list li {
+            font-weight: 600; /* Bolder */
+            color: #ADD8E6; /* Light blue for better highlight on dark theme */
+            margin-bottom: 8px;
+            padding-left: 25px; /* Space for icon */
+            position: relative;
+        }
+        .paperpal-features-list li i {
+            color: #61dafb; /* Accent color for icons */
             position: absolute;
+            left: 0;
+            top: 5px; /* Adjust vertical alignment */
+        }
+
+        /* --- Skills --- */
+        .skill-badge {
+            background-color: #333;
+            color: #E0E0E0;
+            padding: 8px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            display: inline-block;
+        }
+
+        /* --- Game Section --- */
+        #game-section {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        .game-area {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 300px; /* Adjust as needed */
+            margin: 20px auto;
+        }
+        .hole {
+            width: 90px; /* Adjust as needed */
+            height: 90px; /* Adjust as needed */
+            background-color: #333;
+            border-radius: 50%;
+            border: 3px solid #444;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             cursor: pointer;
-            transition: all 0.1s ease-out;
-            box-shadow: 0 0 10px rgba(245,101,101,0.7);
+            transition: background-color 0.2s;
         }
-        #target:hover {
-            transform: scale(1.1);
+        .hole.mole {
+            background-image: url('https://via.placeholder.com/70/FFD700/000000?Text=Mole'); /* Placeholder mole */
+            background-size: cover;
+            background-position: center;
+            /* Or use a solid color: background-color: #ffcc00; */
         }
-        .game-controls button {
-             @apply mt-4 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-105;
+        #controls button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
         }
+        #controls button:hover {
+            background-color: #0056b3;
+        }
+        #score-board p {
+            font-size: 1.2em;
+            margin: 5px 10px;
+            color: #FFFFFF;
+        }
+
+        /* --- Contact Section --- */
+        #contact .social-links-contact a {
+            font-size: 1.5rem;
+            margin: 0 10px;
+            color: #E0E0E0;
+        }
+        #contact .social-links-contact a:hover {
+            color: #61dafb;
+        }
+
+        /* --- Footer --- */
+        footer {
+            background-color: #1f1f1f;
+            color: #a0a0a0;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 0.9em;
+            border-top: 1px solid #333;
+        }
+
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <nav class="bg-white/90 backdrop-blur-lg fixed w-full z-50 top-0 shadow-md fade-in">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#home" class="text-2xl font-bold text-teal-600">Aviral Jain<span class="text-orange-500">.</span></a>
-            <div class="space-x-1 md:space-x-3">
-                <a href="#about" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">About</a>
-                <a href="#experience" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Experience</a>
-                <a href="#interests" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Interests</a>
-                <a href="#tech-stack" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Tech Stack</a>
-                <a href="#game" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Game</a>
-                <a href="#contact" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Contact</a>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">Aviral Kesari</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#hero">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#experience">Experience</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#game-section">Game</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
 
-    <header id="home" class="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-sky-100 via-indigo-50 to-purple-100">
-        <div class="text-center p-6 hero-text-animate">
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-gray-800">
-                Thanks for stopping by, <br class="md:hidden"/> I'm <span class="text-gradient bg-gradient-to-r from-teal-500 to-blue-600">Aviral Jain</span> 👋
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto">
-                I'm a backend python developer focused on building <span class="font-semibold text-orange-600">reliable, scalable, and efficient systems.</span>
-            </p>
-            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
-                I enjoy solving real-world problems through clean, maintainable code and thoughtful design. 🛠️
-            </p>
-            <a href="#experience" class="btn-primary text-lg">See My Experience</a>
-        </div>
-    </header>
-
-    <section id="about" class="py-20 md:py-32 scroll-animate">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Who Am I? 🤔</h2>
-            <p class="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">You might be wondering... (Hint: Not Spider-Man 🕸️, but I do weave some cool code!)</p>
-            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-16 light-card p-8 md:p-12">
-                <div class="lg:w-1/3 text-center flex-shrink-0">
-                     <img src="https://placehold.co/400x400/99f6e4/1e293b?text=Aviral+Jain" alt="Aviral Jain" class="rounded-3xl shadow-2xl mx-auto w-56 h-56 md:w-72 md:h-72 object-cover border-4 border-teal-400 transform transition-transform duration-500 hover:scale-105">
-                     <div class="mt-6 text-gray-700">
-                        <p class="font-semibold text-lg">Senior Software Engineer</p>
-                        <p>at <a href="https://cactusglobal.com" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline font-semibold">Cactus Communications</a> 🌵 (~3 years)</p>
-                     </div>
-                     <p class="text-gray-600 text-sm mt-1">
-                        Building GenAI features for <a href="https://paperpal.com/homev3" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">paperpal.com</a> 🤖
-                     </p>
-                </div>
-                <div class="lg:w-2/3">
-                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
-                        Tired of engineers who just turn Jira tickets into code 🎫➡️💻 — no questions asked, no context understood? Or those who freeze up when PMs ask, *"So... why did we build this?"* 🥶
-                    </p>
-                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
-                        Well, your search ends here! 🎯
-                    </p>
-                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
-                        I'm an engineer with an MBA 🎓 — the rare kind who’s scaled businesses (1 → X) in both offline and online worlds, then pivoted to my passion: building impactful products (0 → 1) 🚀.
-                    </p>
-                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
-                        My business background means I don’t just get the <em>what</em> — I deeply understand the <em>why</em>. I speak product 🗣️ just as fluently as I speak code ⌨️. I connect strategy to systems and translate business needs into clean, scalable features — no hand-holding required.
-                    </p>
-                    <p class="text-gray-700 mb-6 leading-loose text-base md:text-lg font-semibold">
-                        In short: I bridge the gap between humans 🧑‍🤝‍🧑 and computers 🖥️.
-                    </p>
-                    <a href="#contact" class="btn-secondary">Let's Talk Business (or Code!)</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="experience" class="py-20 md:py-32 bg-white/70 scroll-animate"> <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">Experience Highlight 🌟</h2>
-            <p class="text-lg text-center text-gray-600 mb-16 max-w-3xl mx-auto">A quick look at my current role and contributions.</p>
-            <div class="max-w-3xl mx-auto light-card p-8 md:p-10">
-                <div class="flex flex-col sm:flex-row items-center mb-6 text-center sm:text-left">
-                    <img src="https://placehold.co/100x100/0d9488/ffffff?text=CC" alt="Cactus Communications Logo" class="h-20 w-20 rounded-xl mr-0 sm:mr-6 mb-4 sm:mb-0 shadow-lg"> <div>
-                        <h3 class="text-2xl font-semibold text-teal-700">Senior Software Engineer</h3>
-                        <p class="text-orange-600 font-medium text-lg"><a href="https://cactusglobal.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Cactus Communications</a></p>
-                        <p class="text-sm text-gray-500">~3 years of impactful contributions</p>
-                    </div>
-                </div>
-                <p class="text-gray-700 mb-4 leading-relaxed">
-                    At Cactus, I'm primarily involved in developing and enhancing backend systems. My work significantly contributes to <a href="https://paperpal.com/homev3" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline font-semibold">Paperpal</a>, an AI-powered academic writing assistant.
+    <!-- Hero Section with Animated Headline -->
+    <section id="hero" class="d-flex align-items-center justify-content-center text-white">
+        <div class="container text-center">
+            <h1 class="display-3 fw-bold">Hi, I'm Aviral Kesari</h1>
+            <div id="animated-subheadline-container">
+                <p class="lead mb-4">
+                    <span class="subheadline-prefix">I </span><span id="animated-text"></span>
                 </p>
-                <p class="text-gray-700 leading-relaxed font-medium">
-                    Key contributions include:
-                </p>
-                <ul class="list-disc list-inside mt-3 text-gray-700 space-y-2 leading-relaxed">
-                    <li>Designing and implementing robust Python backend services.</li>
-                    <li>Building and maintaining Generative AI features for Paperpal's RHS panel.</li>
-                    <li>Focusing on creating scalable and efficient APIs for a growing user base.</li>
-                    <li>Actively participating in system design, code reviews, and sprint planning.</li>
-                </ul>
             </div>
+            <p class="lead col-md-8 mx-auto">
+                A passionate Software Development Engineer with experience in building scalable web applications and innovative features.
+            </p>
+            <a href="#about" class="btn btn-primary btn-lg mt-3">Learn More About Me</a>
         </div>
     </section>
 
-    <section id="interests" class="py-20 md:py-32 scroll-animate">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Areas of Interest 💡</h2>
-            <p class="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">What gets me excited in the world of software engineering.</p>
-            <ul class="grid md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto interest-list">
-                <li>⚙️ <strong>Building clean, scalable, efficient APIs:</strong> If your codebase gives a migraine to the next developer, you have not done a fair job.</li>
-                <li>🔍 <strong>Code reviews & sprint planning:</strong> My MBA taught me to find tasks that deliver maximum impact - sometimes refactoring bloated code is key.</li>
-                <li>✅ <strong>Keeping test cases up to date:</strong> Tests aren't optional — they're the confidence check before shipping to production.</li>
-                <li>🧠 <strong>Building LLM-based features:</strong> Cactus uses my wrapper to safely manage LLM calls — no direct API key exposure. "We know a guy who knows a guy."</li>
-                <li>🚀 <strong>Optimizing APIs:</strong> Latency improvement is every developer's hell, but it's probably the most satisfying work. Asyncio for the win!</li>
-                <li>🧱 <strong>System design & architecture:</strong> I believe in clear structure — design diagrams don’t lie; they reveal what’s missing early.</li>
-                <li>☁️ <strong>Cloud technologies:</strong> Comfortable with AWS & containers. Infrastructure as Code (Terraform) is second nature.</li>
-            </ul>
-        </div>
-    </section>
-
-    <section id="tech-stack" class="py-20 md:py-32 bg-white/70 scroll-animate">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">My Tech Stack 🛠️</h2>
-            <p class="text-lg text-center text-gray-600 mb-16 max-w-3xl mx-auto">The tools and technologies I work with daily.</p>
-            
-            <div class="max-w-4xl mx-auto space-y-12 light-card p-8 md:p-10">
-                <div>
-                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-laptop-code"></i> Languages & Frameworks</h3>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <img src="https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" class="h-10"/>
-                    </div>
+    <!-- About Me Section (Who Am I) -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Who Am I?</h2>
+                <hr class="w-25 mx-auto" style="opacity: 0.3;">
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center">
+                    <!-- Replace with your profile picture path -->
+                    <img src="https://via.placeholder.com/250/61dafb/121212?Text=Aviral" alt="Aviral Kesari" class="img-fluid rounded-circle profile-pic mb-4 mb-md-0" style="width:250px; height:250px; object-fit:cover; border: 5px solid #333;">
                 </div>
-
-                <div>
-                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-cogs"></i> DevOps & Cloud</h3>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <img src="https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" class="h-10"/>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-tools"></i> Tools & Collaboration</h3>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <img src="https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-Confluence-172B4D?style=for-the-badge&logo=confluence&logoColor=white" alt="Confluence" class="h-10"/>
-                    </div>
-                </div>
-                
-                <div>
-                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-brain"></i> AI/ML & LLMs</h3>
-                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
-                        <img src="https://img.shields.io/badge/-LLMs-ffcc00?style=for-the-badge&logo=openai&logoColor=black" alt="LLMs" class="h-10"/>
-                        <img src="https://img.shields.io/badge/-Prompt%20Engineering-5e5e5e?style=for-the-badge&logo=OpenAI&logoColor=white" alt="Prompt Engineering" class="h-10"/>
+                <div class="col-md-8">
+                    <!-- The profile-card div below is what had the square -->
+                    <div class="profile-card p-0"> <!-- Removed padding here as border is gone -->
+                        <h3 class="mb-3">Software Development Engineer</h3>
+                        <p class="lead" style="color: #b0b0b0;">
+                            Hello! I'm Aviral, a Software Development Engineer II at Cactus Communications, specializing in building robust and user-centric features for Paperpal, an AI-powered academic writing assistant.
+                        </p>
+                        <p style="color: #b0b0b0;">
+                            I thrive on transforming complex problems into elegant solutions and have a strong background in full-stack development, with a keen interest in AI/ML applications and backend systems. My goal is to leverage technology to create impactful products that make a difference.
+                        </p>
+                        <p style="color: #b0b0b0;">
+                            When I'm not coding, I enjoy exploring new technologies, contributing to open-source projects, and playing strategy games.
+                        </p>
+                        <div class="mt-4">
+                            <a href="YOUR_LINKEDIN_PROFILE_URL" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light me-2"><i class="fab fa-linkedin-in"></i> LinkedIn</a>
+                            <a href="YOUR_GITHUB_PROFILE_URL" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light"><i class="fab fa-github"></i> GitHub</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="game" class="py-20 md:py-32 scroll-animate">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Quick Click Challenge! 🎯</h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Test your reflexes! Click the red target as many times as you can in 15 seconds.</p>
-            
-            <div id="game-area" class="light-card p-6 md:p-8">
-                <div class="flex justify-around items-center mb-6 text-xl font-semibold">
-                    <div>Time Left: <span id="time-left" class="text-orange-600">15</span>s</div>
-                    <div>Score: <span id="score" class="text-teal-600">0</span></div>
+    <!-- Experience Section -->
+    <section id="experience" class="section section-bg-darker">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">My Experience</h2>
+                <hr class="w-25 mx-auto" style="opacity: 0.3;">
+            </div>
+            <div class="row">
+                <!-- Paperpal Experience -->
+                <div class="col-md-10 mx-auto experience-item">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-3 text-center text-md-start mb-3 mb-md-0">
+                                    <!-- You can add a company logo here if you wish -->
+                                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBL1L0L_plqevkO140YxqyAeyPmKzR82GkWA&s" alt="Paperpal/Cactus Logo" style="max-width: 100px; margin-bottom:10px; border-radius:5px;">
+                                    <h5 class="card-title mb-1">Paperpal</h5>
+                                    <p class="card-text text-muted">@ Cactus Communications</p>
+                                </div>
+                                <div class="col-md-9">
+                                    <h6 class="mb-1 fw-bold">Software Development Engineer II</h6>
+                                    <p class="text-muted fst-italic small mb-2">May 2022 - Present</p>
+                                    <p class="mb-2">Key contributions to Paperpal, an AI-powered tool for academic writing enhancement.</p>
+                                    <ul class="paperpal-features-list">
+                                        <li><i class="fas fa-cogs"></i>Architected & developed core modules for real-time writing assistance.</li>
+                                        <li><i class="fas fa-lightbulb"></i>Implemented a new feature for suggesting contextual synonyms, improving user engagement by 15%.</li>
+                                        <li><i class="fas fa-users"></i>Engineered a real-time collaborative editing tool proof-of-concept.</li>
+                                        <li><i class="fas fa-search"></i>Developed and integrated a plagiarism checker API.</li>
+                                        <li><i class="fas fa-tachometer-alt"></i>Optimized backend API response times by over 30% through query optimization and caching strategies.</li>
+                                        <li><i class="fas fa-shield-alt"></i>Enhanced application security by implementing OAuth2.0 and JWT authentication.</li>
+                                        <li><i class="fas fa-code-branch"></i>Led migration of a monolithic service to a microservices architecture.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div id="game-container">
-                    <div id="target"></div>
+                <!-- Add other experiences similarly -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section (Placeholder) -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">My Projects</h2>
+                <hr class="w-25 mx-auto" style="opacity: 0.3;">
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200/61dafb/121212?Text=Project+1" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Title 1</h5>
+                            <p class="card-text">Brief description of the project. Technologies used: Tech1, Tech2.</p>
+                            <a href="#" class="btn btn-sm btn-outline-light">View Details</a>
+                        </div>
+                    </div>
                 </div>
-                <div class="game-controls mt-6">
-                    <button id="start-game-btn">Start Game</button>
-                    <p id="game-message" class="mt-4 text-gray-600 h-6"></p>
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="https://via.placeholder.com/300x200/61dafb/121212?Text=Project+2" class="card-img-top" alt="Project 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Title 2</h5>
+                            <p class="card-text">Brief description of the project. Technologies used: TechA, TechB.</p>
+                            <a href="#" class="btn btn-sm btn-outline-light">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                     <div class="card">
+                        <img src="https://via.placeholder.com/300x200/61dafb/121212?Text=Project+3" class="card-img-top" alt="Project 3">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Title 3</h5>
+                            <p class="card-text">Brief description of the project. Technologies used: TechX, TechY.</p>
+                            <a href="#" class="btn btn-sm btn-outline-light">View Details</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 md:py-32 bg-white/70 scroll-animate">
-        <div class="container mx-auto px-6">
-            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">Get In Touch 📬</h2>
-            <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">Have a project, a question, or just want to connect? I'd love to hear from you!</p>
-            
-            <div class="max-w-xl mx-auto light-card p-8 md:p-10">
-                <form action="#" method="POST"> <div class="mb-6">
-                        <label for="name" class="block mb-2 text-sm font-medium text-teal-700">Full Name</label>
-                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="Your Name" required>
+    <!-- Skills Section (Placeholder) -->
+    <section id="skills" class="section section-bg-darker">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">My Skills</h2>
+                <hr class="w-25 mx-auto" style="opacity: 0.3;">
+            </div>
+            <div class="text-center">
+                <span class="skill-badge">Java</span>
+                <span class="skill-badge">Spring Boot</span>
+                <span class="skill-badge">Python</span>
+                <span class="skill-badge">JavaScript</span>
+                <span class="skill-badge">React</span>
+                <span class="skill-badge">Node.js</span>
+                <span class="skill-badge">SQL</span>
+                <span class="skill-badge">NoSQL (MongoDB)</span>
+                <span class="skill-badge">Docker</span>
+                <span class="skill-badge">Kubernetes</span>
+                <span class="skill-badge">AWS</span>
+                <span class="skill-badge">Git</span>
+                <span class="skill-badge">Microservices</span>
+                <span class="skill-badge">REST APIs</span>
+                <span class="skill-badge">Agile Methodologies</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Section -->
+    <section id="game-section" class="section">
+        <div class="container text-center">
+            <h2 class="fw-bold mb-4">Whack-a-Mole!</h2>
+            <div id="score-board" class="d-flex justify-content-center mb-3">
+                <p>Score: <span id="score">0</span></p>
+                <p class="ms-4">Time Left: <span id="timeLeft">8</span>s</p>
+            </div>
+            <div class="game-area mx-auto">
+                <!-- Holes will be generated by JS or you can pre-populate -->
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+                <div class="hole"></div>
+            </div>
+            <div id="controls" class="mt-4">
+                <button id="startGame" class="btn btn-primary btn-lg">Start Game</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get in Touch Section -->
+    <section id="contact" class="section section-bg-darker">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold">Get in Touch</h2>
+                <hr class="w-25 mx-auto" style="opacity: 0.3;">
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8 text-center">
+                    <p class="lead mb-4">
+                        I'm always excited to discuss new projects, collaborations, or opportunities.
+                        Feel free to reach out!
+                    </p>
+                    <a href="mailto:YOUR_EMAIL@example.com" class="btn btn-primary btn-lg mb-4">
+                        <i class="fas fa-envelope me-2"></i>Send me an Email
+                    </a>
+                    <p class="mt-3 mb-2">You can also find me on:</p>
+                    <div class="social-links-contact">
+                        <a href="YOUR_LINKEDIN_PROFILE_URL" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="fab fa-linkedin fa-2x"></i></a>
+                        <a href="YOUR_GITHUB_PROFILE_URL" target="_blank" rel="noopener noreferrer" title="GitHub"><i class="fab fa-github fa-2x"></i></a>
+                        <!-- Add other social links here, e.g., Twitter, LeetCode -->
+                        <!-- <a href="#" target="_blank" rel="noopener noreferrer" title="LeetCode"><i class="fas fa-code fa-2x"></i></a> -->
                     </div>
-                    <div class="mb-6">
-                        <label for="email" class="block mb-2 text-sm font-medium text-teal-700">Email Address</label>
-                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="you@example.com" required>
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block mb-2 text-sm font-medium text-teal-700">Message</label>
-                        <textarea id="message" name="message" rows="4" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="Your message..." required></textarea>
-                    </div>
-                    <div class="text-center">
-                        <button type="submit" class="btn-primary text-lg w-full sm:w-auto">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
-                    </div>
-                </form>
-                <div class="mt-10 text-center text-gray-700">
-                    <p class="mb-2 text-lg">Or reach me directly:</p>
-                    <p class="mb-1"><i class="fas fa-envelope mr-2 text-teal-600"></i>Email: <a href="mailto:jainaviral25@gmail.com" class="text-teal-600 hover:underline">jainaviral25@gmail.com</a></p>
-                    <p class="mb-1"><i class="fas fa-map-marker-alt mr-2 text-orange-500"></i>Location: Noida, Delhi NCR, India 🇮🇳</p>
-                    <p><i class="fab fa-linkedin mr-2 text-blue-600"></i>LinkedIn: <a href="https://www.linkedin.com/in/aviral-jain-6190b9133/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">linkedin.com/in/aviral-jain</a></p>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-12 bg-slate-200 border-t border-gray-300">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-700">&copy; <span id="currentYear"></span> Aviral Jain. All rights reserved.</p>
-            <p class="text-sm text-gray-600 mt-1">Crafted with <span class="text-red-500 animate-pulse">&hearts;</span> and Tailwind CSS.</p>
-            <div class="mt-4 space-x-6">
-                <a href="https://www.linkedin.com/in/aviral-jain-6190b9133/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-xl"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-xl"><i class="fab fa-github"></i> <span class="text-xs">(Your GitHub)</span></a>
-            </div>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© <span id="currentYear"></span> Aviral Kesari. All Rights Reserved.</p>
+            <p>Designed with <i class="fas fa-heart" style="color: #61dafb;"></i> and Bootstrap</p>
         </div>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Simple scroll animation trigger
-        const scrollElements = document.querySelectorAll('.scroll-animate');
-        const elementInView = (el, dividend = 1) => {
-            const elementTop = el.getBoundingClientRect().top;
-            return ( elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend );
-        };
-        const displayScrollElement = (element) => { element.classList.add('in-view'); };
-        const handleScrollAnimation = () => {
-            scrollElements.forEach((el) => {
-                if (elementInView(el, 1.20)) { // Adjust dividend for when animation triggers
-                    displayScrollElement(el);
+        // --- Smooth Scrolling for Navbar Links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href').length > 1 && document.querySelector(this.getAttribute('href'))) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                    // Close navbar on mobile after click
+                    const navbarCollapse = document.getElementById('navbarNav');
+                    if (navbarCollapse.classList.contains('show')) {
+                        new bootstrap.Collapse(navbarCollapse).hide();
+                    }
                 }
             });
-        };
-        window.addEventListener('scroll', handleScrollAnimation);
-        document.addEventListener('DOMContentLoaded', () => { // Ensure it runs on load
-            handleScrollAnimation(); // Initial check
         });
 
-        // Game Logic for "Quick Click Challenge"
-        const gameContainer = document.getElementById('game-container');
-        const target = document.getElementById('target');
-        const scoreDisplay = document.getElementById('score');
-        const timeLeftDisplay = document.getElementById('time-left');
-        const startGameBtn = document.getElementById('start-game-btn');
-        const gameMessage = document.getElementById('game-message');
+        // --- Active Nav Link Highlighting on Scroll ---
+        const sections = document.querySelectorAll("section[id]");
+        window.addEventListener("scroll", navHighlighter);
 
-        let score = 0;
-        let timeLeft = 15;
-        let gameInterval;
-        let gameActive = false;
+        function navHighlighter() {
+          let scrollY = window.pageYOffset;
+          sections.forEach(current => {
+            const sectionHeight = current.offsetHeight;
+            // Adjust offset if navbar is fixed and has height
+            const sectionTop = current.offsetTop - 100; // 70px navbar + 30px buffer
+            let sectionId = current.getAttribute("id");
 
-        function moveTarget() {
-            if (!gameActive) return;
-            const containerWidth = gameContainer.offsetWidth;
-            const containerHeight = gameContainer.offsetHeight;
-            const targetWidth = target.offsetWidth;
-            const targetHeight = target.offsetHeight;
-
-            const randomX = Math.random() * (containerWidth - targetWidth);
-            const randomY = Math.random() * (containerHeight - targetHeight);
-
-            target.style.left = randomX + 'px';
-            target.style.top = randomY + 'px';
-            target.style.display = 'block';
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+              document.querySelector(".navbar-nav a[href*=" + sectionId + "]").classList.add("active");
+            } else {
+              document.querySelector(".navbar-nav a[href*=" + sectionId + "]").classList.remove("active");
+            }
+          });
         }
 
-        function updateScore() {
-            score++;
-            scoreDisplay.textContent = score;
+
+        // --- 6. "Eat Sleep Code Repeat" Animation ---
+        document.addEventListener('DOMContentLoaded', function() {
+            const phrases = ["Eat.", "Sleep.", "Code.", "Repeat!"];
+            // Alternative engaging phrases:
+            // const phrases = ["Build.", "Innovate.", "Solve.", "Deploy."];
+            // const phrases = ["Design.", "Develop.", "Test.", "Iterate."];
+
+            let currentPhraseIndex = 0;
+            let currentCharIndex = 0;
+            const animatedTextElement = document.getElementById('animated-text');
+            const typingSpeed = 120; // ms per char
+            const erasingSpeed = 70; // ms per char
+            const delayBetweenPhrases = 1500; // ms
+
+            function type() {
+                if (currentCharIndex < phrases[currentPhraseIndex].length) {
+                    animatedTextElement.textContent += phrases[currentPhraseIndex].charAt(currentCharIndex);
+                    animatedTextElement.style.animation = 'none'; // Stop blink during typing
+                    animatedTextElement.style.borderRight = '3px solid #61dafb';
+                    currentCharIndex++;
+                    setTimeout(type, typingSpeed);
+                } else {
+                    animatedTextElement.style.animation = 'blink-caret 0.75s step-end infinite';
+                    setTimeout(erase, delayBetweenPhrases);
+                }
+            }
+
+            function erase() {
+                if (currentCharIndex > 0) {
+                    animatedTextElement.textContent = phrases[currentPhraseIndex].substring(0, currentCharIndex - 1);
+                    animatedTextElement.style.animation = 'none'; // Stop blink during erasing
+                    animatedTextElement.style.borderRight = '3px solid #61dafb';
+                    currentCharIndex--;
+                    setTimeout(erase, erasingSpeed);
+                } else {
+                    currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+                    animatedTextElement.style.animation = 'blink-caret 0.75s step-end infinite';
+                    setTimeout(type, typingSpeed / 2);
+                }
+            }
+
+            if (animatedTextElement) {
+                animatedTextElement.style.borderRight = '3px solid #61dafb'; // Initial cursor
+                animatedTextElement.style.animation = 'blink-caret 0.75s step-end infinite';
+                setTimeout(type, delayBetweenPhrases / 2); // Start animation
+            }
+        });
+
+
+        // --- 3. Whack-a-Mole Game Logic (8 secs) ---
+        const holes = document.querySelectorAll('.hole');
+        const scoreDisplay = document.getElementById('score');
+        const timeLeftDisplay = document.getElementById('timeLeft');
+        const startButton = document.getElementById('startGame');
+
+        let score = 0;
+        let timeLeft = 8; // GAME DURATION SET TO 8 SECONDS
+        let gameInterval;
+        let moleInterval;
+        let hitPosition;
+        let gameActive = false;
+
+        function randomHole() {
+            holes.forEach(hole => hole.classList.remove('mole'));
+            const randomIndex = Math.floor(Math.random() * holes.length);
+            const randomHole = holes[randomIndex];
+            randomHole.classList.add('mole');
+            hitPosition = randomHole.id || randomIndex; // Use id if available, else index
         }
 
         function startGame() {
             if (gameActive) return;
             gameActive = true;
             score = 0;
-            timeLeft = 15;
+            timeLeft = 8; // Reset time
             scoreDisplay.textContent = score;
             timeLeftDisplay.textContent = timeLeft;
-            startGameBtn.disabled = true;
-            startGameBtn.textContent = "Game On!";
-            gameMessage.textContent = "";
-            target.style.display = 'block';
+            startButton.disabled = true;
 
-
-            moveTarget(); // Initial placement
+            moleInterval = setInterval(randomHole, 800); // Mole appearance speed
 
             gameInterval = setInterval(() => {
                 timeLeft--;
@@ -433,26 +644,32 @@
 
         function endGame() {
             clearInterval(gameInterval);
+            clearInterval(moleInterval);
+            holes.forEach(hole => hole.classList.remove('mole'));
+            alert('Game Over! Your final score is: ' + score);
+            startButton.disabled = false;
             gameActive = false;
-            target.style.display = 'none';
-            startGameBtn.disabled = false;
-            startGameBtn.textContent = "Play Again?";
-            gameMessage.textContent = `Game Over! Your final score: ${score}`;
         }
 
-        target.addEventListener('click', () => {
-            if (gameActive) {
-                updateScore();
-                moveTarget();
-            }
+        holes.forEach((hole, index) => {
+            hole.id = 'hole-' + index; // Ensure holes have IDs for hit detection
+            hole.addEventListener('mousedown', () => {
+                if (gameActive && (hole.id === hitPosition || hole.classList.contains('mole'))) {
+                    score++;
+                    scoreDisplay.textContent = score;
+                    hole.classList.remove('mole'); // Remove mole immediately on hit
+                    // Optionally add a quick visual feedback for hit
+                }
+            });
         });
 
-        startGameBtn.addEventListener('click', startGame);
-        
-        // Initially hide target until game starts
-        target.style.display = 'none';
+        if (startButton) {
+            startButton.addEventListener('click', startGame);
+        }
+
+        // --- Update Footer Year ---
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
 
     </script>
-
 </body>
 </html>
