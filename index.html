@@ -1,163 +1,458 @@
-<html>
-  <head>
-    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
-    <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Inter%3Awght%40400%3B500%3B700%3B900&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900"
-    />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviral Jain - Backend Python Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom global styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* New background gradient inspired by reference */
+            background-image: linear-gradient(180deg, #f0f4f8 0%, #d9e2ec 100%); /* Light blue/gray gradient */
+            color: #2d3748; /* text-gray-800 */
+            overflow-x: hidden; /* Prevent horizontal scroll */
+        }
 
-    <title>Stitch Design</title>
-    <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
+        /* Animation: Fade in */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-slate-50 justify-between group/design-root overflow-x-hidden" style='font-family: Inter, "Noto Sans", sans-serif;'>
-      <div>
-        <div class="flex items-center bg-slate-50 p-4 pb-2 justify-between">
-          <h2 class="text-[#0e141b] text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center pl-12">Aviral Jain</h2>
-          <div class="flex w-12 items-center justify-end">
-            <button
-              class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-12 bg-transparent text-[#0e141b] gap-2 text-base font-bold leading-normal tracking-[0.015em] min-w-0 p-0"
-            >
-              <div class="text-[#0e141b]" data-icon="List" data-size="24px" data-weight="regular">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                  <path
-                    d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"
-                  ></path>
-                </svg>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div class="flex p-4 @container">
-          <div class="flex w-full flex-col gap-4 items-center">
-            <div class="flex gap-4 flex-col items-center">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full min-h-32 w-32"
-                style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCpvUJBXvonjbQigDQ0WxyUEtngFDN_eIe_xyYirLEAXhgHwAkxNdX0_W7yvZipnULXGXwuGDAPDxToREKBa3XUAnJzkEuuQrVQLf7itfqcP1g6wBlpSv65A0bZU1hOn8dOlyPj5mws-hbKPSaL8j9X7lI2WW19vL1CkU3oCff44q70de1mkCssXluunvydONtxP_bRGPnFDN2B0KbVQ_42x_-7ZngsRHIazeOLkPvYjUL06q_3vn93jMRdElb9cux-4ayTphPbRg");'
-              ></div>
-              <div class="flex flex-col items-center justify-center justify-center">
-                <p class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] text-center">Aviral Jain</p>
-                <p class="text-[#4e7097] text-base font-normal leading-normal text-center">Backend Python Developer</p>
-                <p class="text-[#4e7097] text-base font-normal leading-normal text-center">Passionate about building scalable and efficient systems</p>
-              </div>
+        /* Animation: Fade in up */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        /* Staggered animation for hero text */
+        .hero-text-animate > * {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        .hero-text-animate > *:nth-child(1) { animation-delay: 0.2s; }
+        .hero-text-animate > *:nth-child(2) { animation-delay: 0.4s; }
+        .hero-text-animate > *:nth-child(3) { animation-delay: 0.6s; }
+        .hero-text-animate > *:nth-child(4) { animation-delay: 0.8s; }
+
+        /* Scroll-triggered animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .scroll-animate.in-view {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom gradient text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom button style */
+        .btn-primary {
+            @apply inline-block px-8 py-3 bg-teal-500 text-white font-semibold rounded-lg shadow-lg hover:bg-teal-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-teal-400 focus:ring-opacity-75;
+        }
+        .btn-secondary {
+            @apply inline-block px-8 py-3 bg-orange-500 text-white font-semibold rounded-lg shadow-lg hover:bg-orange-600 transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-75;
+        }
+        
+        /* Card effect for light theme */
+        .light-card {
+            background: rgba(255, 255, 255, 0.9); /* Slightly more opaque */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); /* Safari */
+            border: 1px solid rgba(0, 0, 0, 0.08); /* Slightly more visible border */
+            border-radius: 20px; /* More rounded */
+            box-shadow: 0 10px 35px 0 rgba(0, 0, 0, 0.12); /* Enhanced shadow */
+        }
+
+        /* Custom list style for Areas of Interest */
+        .interest-list li {
+            @apply bg-white p-5 rounded-xl shadow-md border border-gray-200 mb-4 transition-all duration-300 hover:shadow-lg hover:border-teal-400 transform hover:-translate-y-1;
+        }
+        .interest-list li strong {
+            @apply text-teal-700; /* Darker teal for better contrast on white */
+        }
+
+        /* Game Styles */
+        #game-container {
+            width: 100%;
+            max-width: 500px;
+            height: 350px;
+            background-color: #e2e8f0; /* bg-slate-200 */
+            border: 2px solid #94a3b8; /* border-slate-400 */
+            position: relative;
+            border-radius: 12px;
+            overflow: hidden;
+            margin: auto;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        #target {
+            width: 50px;
+            height: 50px;
+            background-color: #f56565; /* bg-red-500 */
+            border-radius: 50%;
+            position: absolute;
+            cursor: pointer;
+            transition: all 0.1s ease-out;
+            box-shadow: 0 0 10px rgba(245,101,101,0.7);
+        }
+        #target:hover {
+            transform: scale(1.1);
+        }
+        .game-controls button {
+             @apply mt-4 px-6 py-2 bg-green-500 text-white font-semibold rounded-lg shadow-md hover:bg-green-600 transition-all duration-300 transform hover:scale-105;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <nav class="bg-white/90 backdrop-blur-lg fixed w-full z-50 top-0 shadow-md fade-in">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#home" class="text-2xl font-bold text-teal-600">Aviral Jain<span class="text-orange-500">.</span></a>
+            <div class="space-x-1 md:space-x-3">
+                <a href="#about" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">About</a>
+                <a href="#experience" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Experience</a>
+                <a href="#interests" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Interests</a>
+                <a href="#tech-stack" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Tech Stack</a>
+                <a href="#game" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Game</a>
+                <a href="#contact" class="text-gray-700 hover:text-teal-600 transition-colors duration-300 px-3 py-2 rounded-md text-sm md:text-base">Contact</a>
             </div>
-          </div>
         </div>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">About Me</h2>
-        <p class="text-[#0e141b] text-base font-normal leading-normal pb-3 pt-1 px-4">
-          I am a backend Python developer with a strong foundation in building robust and scalable systems. My expertise lies in crafting efficient solutions that meet complex
-          business needs. I am always eager to learn and adapt to new technologies, ensuring I stay at the forefront of the industry.
-        </p>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Skills</h2>
-        <div class="flex gap-3 p-3 flex-wrap pr-4">
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Python</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Django</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Flask</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">SQL</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">REST APIs</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">System Design</p>
-          </div>
+    </nav>
+
+    <header id="home" class="min-h-screen flex items-center justify-center pt-20 bg-gradient-to-br from-sky-100 via-indigo-50 to-purple-100">
+        <div class="text-center p-6 hero-text-animate">
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-4 text-gray-800">
+                Thanks for stopping by, <br class="md:hidden"/> I'm <span class="text-gradient bg-gradient-to-r from-teal-500 to-blue-600">Aviral Jain</span> 👋
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700 mb-4 max-w-3xl mx-auto">
+                I'm a backend python developer focused on building <span class="font-semibold text-orange-600">reliable, scalable, and efficient systems.</span>
+            </p>
+            <p class="text-lg md:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+                I enjoy solving real-world problems through clean, maintainable code and thoughtful design. 🛠️
+            </p>
+            <a href="#experience" class="btn-primary text-lg">See My Experience</a>
         </div>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Tech Stack</h2>
-        <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCnp-0guwFINKuYKAG3axdNNEg9xKIe8mV84Z_HuJ_79bYld7d1MeHGxrucyjnoXVOlQbY-oyTVkX2xiuR1GWa1-1Q7y-jTCFVuP0-ZiorsVPOTkJFBP5d0QhD1Mlw2O0njKJ_hpqYfot1ckNMajK6rhB1_W6NtieFISHXiFsZExRzucFGH2MsPIPm6Di8GbQBem6OkhLhEqOFnQ8VLjRwDCZeXytBGy-1qc4NknRqP6x-ZuMNg_GtoP-EvRRmShGvvVKP7MJ9EUA");'
-            ></div>
-          </div>
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDUxY0CiMb7zsAsj9mOll6pzIF0YspZAieAixFbYBjW2sqiWkO5A1qCEmWQWhq39JZJeu-WU_cvr8vnCWvDpdpdhJBWbsCihV9p-9wXvsPu3teY34B21TQYU68Fg5-nQBFc0nyoqfLGdAdgLHBuTqGjHKO1-IZ3luDVWup18b2K9lVfF_nwDjw3xmav3eMOXiAeXX0KoLoawTCDw0nJB07PJkohbeopDYNwMFt9mR-T_wZ5nAN48etWHgzr8EeVStSDL8gMGDA-cQ");'
-            ></div>
-          </div>
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBJ5zudRkfDb5qy0O1DN5KZZLrcmht8hpA4mo7cDnU7WP0DU4LNj4qSlB08T7GpF_oOTdoQLvW5J35qNlCQfCgbqq94KizDLsk244qJS4mPnYj_lz0py3U2wQvQs2pTMzt3Us9PZrdmnHK4qHrQqyQ5PY1YdYuMf3HOQiFIDFNBlytRS0a2NgdpLxnpF78kUfg87rZLUy5wZlYCQaEzuua4-_7I8oacDP3fRG9onXrrmSRoni0LoyWvSLOn6UlzzAu9PxrVFLK3QQ");'
-            ></div>
-          </div>
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCCveLlV9C83hZt0seUJsxPFCMfIQXZ9_0x_leYoOHo6o-qa_3s-KXDnIdCf9MYU_-1z2W4mr1xXNbhZxrA8wA7fD6R5pavuHjA15LxqyRwCN4HOiDd18ybn13amD9nZ3jorbWA9EuPXqnwWJiTKeCRXmveWTloKRqb1GXu2X6RcIQMDnSoERVn6P4z5sU3-NLcHtwRNfCHL290iTSuDVmWQizZpdLDH_g5mzjPozagmpZneYMTuKaK-tyBer5lRbmy9ZMG-eJGrg");'
-            ></div>
-          </div>
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAgBo1rDnfpJoMMiK-IeIJ79XXv3iDLgQQR7gt_N3uuC3YwlDyQZ28NX-KQQc3Db1qH3bub8NNI5zhwiqGFKVd2PylmNKzksIxvy9WiwHczPA0IHwmNC9f0jTlFaZ4AZ9VxOK_SkUvNTPl_W8gTID9Bs-9s1IPDL-w4XF8WawTRFaoFO2apBDvxtxn-Z5FKDAUJ6NouCvz4ttGj2XVtagTbOhDgbzl6Pnq-K-9DhakpYuLukaraNnxQlHCY5p-b_xI0gdQPcfoe5A");'
-            ></div>
-          </div>
-          <div class="flex flex-col gap-3">
-            <div
-              class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-              style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB7hSJGxm-2PJ8oXJ3WaEJ2ARTPZzv7u-D8qkccZXHpkQYZkVdyKj_8h5xxVCDG07qaZny5zHIPuS0Dc07gxdmJ0DJ_h8J1lU-KMRVBcRh2Lc7pQ-sFNJ7n3RXmHrOy-Vsg2ZczHuo9nx4sr_tAiyh_fOEdtpniok8606eW43zX4Z__PIGbO7K-dJYl852NIQFFuBSRJ-FNXGiMNun34fpa1kBVJ54oOOevuDm0ZAWQgFrxxEPiNcthGKphUicIB84zGjiXVsaPXw");'
-            ></div>
-          </div>
-        </div>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Areas of Interest</h2>
-        <div class="flex gap-3 p-3 flex-wrap pr-4">
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Distributed Systems</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Microservices</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Cloud Computing</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Database Design</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Performance Optimization</p>
-          </div>
-          <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-full bg-[#e7edf3] pl-4 pr-4">
-            <p class="text-[#0e141b] text-sm font-medium leading-normal">Scalability</p>
-          </div>
-        </div>
-        <h2 class="text-[#0e141b] text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Contact</h2>
-        <div class="flex items-center gap-4 bg-slate-50 px-4 min-h-[72px] py-2 justify-between">
-          <div class="flex items-center gap-4">
-            <div class="text-[#0e141b] flex items-center justify-center rounded-lg bg-[#e7edf3] shrink-0 size-12" data-icon="LinkedinLogo" data-size="24px" data-weight="regular">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                <path
-                  d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"
-                ></path>
-              </svg>
+    </header>
+
+    <section id="about" class="py-20 md:py-32 scroll-animate">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Who Am I? 🤔</h2>
+            <p class="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">You might be wondering... (Hint: Not Spider-Man 🕸️, but I do weave some cool code!)</p>
+            <div class="flex flex-col lg:flex-row items-center lg:items-start justify-center gap-10 lg:gap-16 light-card p-8 md:p-12">
+                <div class="lg:w-1/3 text-center flex-shrink-0">
+                     <img src="https://placehold.co/400x400/99f6e4/1e293b?text=Aviral+Jain" alt="Aviral Jain" class="rounded-3xl shadow-2xl mx-auto w-56 h-56 md:w-72 md:h-72 object-cover border-4 border-teal-400 transform transition-transform duration-500 hover:scale-105">
+                     <div class="mt-6 text-gray-700">
+                        <p class="font-semibold text-lg">Senior Software Engineer</p>
+                        <p>at <a href="https://cactusglobal.com" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline font-semibold">Cactus Communications</a> 🌵 (~3 years)</p>
+                     </div>
+                     <p class="text-gray-600 text-sm mt-1">
+                        Building GenAI features for <a href="https://paperpal.com/homev3" target="_blank" rel="noopener noreferrer" class="text-orange-500 hover:underline">paperpal.com</a> 🤖
+                     </p>
+                </div>
+                <div class="lg:w-2/3">
+                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
+                        Tired of engineers who just turn Jira tickets into code 🎫➡️💻 — no questions asked, no context understood? Or those who freeze up when PMs ask, *"So... why did we build this?"* 🥶
+                    </p>
+                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
+                        Well, your search ends here! 🎯
+                    </p>
+                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
+                        I'm an engineer with an MBA 🎓 — the rare kind who’s scaled businesses (1 → X) in both offline and online worlds, then pivoted to my passion: building impactful products (0 → 1) 🚀.
+                    </p>
+                    <p class="text-gray-700 mb-5 leading-loose text-base md:text-lg">
+                        My business background means I don’t just get the <em>what</em> — I deeply understand the <em>why</em>. I speak product 🗣️ just as fluently as I speak code ⌨️. I connect strategy to systems and translate business needs into clean, scalable features — no hand-holding required.
+                    </p>
+                    <p class="text-gray-700 mb-6 leading-loose text-base md:text-lg font-semibold">
+                        In short: I bridge the gap between humans 🧑‍🤝‍🧑 and computers 🖥️.
+                    </p>
+                    <a href="#contact" class="btn-secondary">Let's Talk Business (or Code!)</a>
+                </div>
             </div>
-            <div class="flex flex-col justify-center">
-              <p class="text-[#0e141b] text-base font-medium leading-normal line-clamp-1">LinkedIn</p>
-              <p class="text-[#4e7097] text-sm font-normal leading-normal line-clamp-2">Connect with me on LinkedIn</p>
-            </div>
-          </div>
-          <div class="shrink-0">
-            <div class="text-[#0e141b] flex size-7 items-center justify-center" data-icon="ArrowRight" data-size="24px" data-weight="regular">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="currentColor" viewBox="0 0 256 256">
-                <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"></path>
-              </svg>
-            </div>
-          </div>
         </div>
-      </div>
-      <div><div class="h-5 bg-slate-50"></div></div>
-    </div>
-  </body>
+    </section>
+
+    <section id="experience" class="py-20 md:py-32 bg-white/70 scroll-animate"> <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">Experience Highlight 🌟</h2>
+            <p class="text-lg text-center text-gray-600 mb-16 max-w-3xl mx-auto">A quick look at my current role and contributions.</p>
+            <div class="max-w-3xl mx-auto light-card p-8 md:p-10">
+                <div class="flex flex-col sm:flex-row items-center mb-6 text-center sm:text-left">
+                    <img src="https://placehold.co/100x100/0d9488/ffffff?text=CC" alt="Cactus Communications Logo" class="h-20 w-20 rounded-xl mr-0 sm:mr-6 mb-4 sm:mb-0 shadow-lg"> <div>
+                        <h3 class="text-2xl font-semibold text-teal-700">Senior Software Engineer</h3>
+                        <p class="text-orange-600 font-medium text-lg"><a href="https://cactusglobal.com" target="_blank" rel="noopener noreferrer" class="hover:underline">Cactus Communications</a></p>
+                        <p class="text-sm text-gray-500">~3 years of impactful contributions</p>
+                    </div>
+                </div>
+                <p class="text-gray-700 mb-4 leading-relaxed">
+                    At Cactus, I'm primarily involved in developing and enhancing backend systems. My work significantly contributes to <a href="https://paperpal.com/homev3" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:underline font-semibold">Paperpal</a>, an AI-powered academic writing assistant.
+                </p>
+                <p class="text-gray-700 leading-relaxed font-medium">
+                    Key contributions include:
+                </p>
+                <ul class="list-disc list-inside mt-3 text-gray-700 space-y-2 leading-relaxed">
+                    <li>Designing and implementing robust Python backend services.</li>
+                    <li>Building and maintaining Generative AI features for Paperpal's RHS panel.</li>
+                    <li>Focusing on creating scalable and efficient APIs for a growing user base.</li>
+                    <li>Actively participating in system design, code reviews, and sprint planning.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="interests" class="py-20 md:py-32 scroll-animate">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Areas of Interest 💡</h2>
+            <p class="text-lg text-center text-gray-600 mb-12 max-w-3xl mx-auto">What gets me excited in the world of software engineering.</p>
+            <ul class="grid md:grid-cols-2 gap-x-8 gap-y-6 max-w-4xl mx-auto interest-list">
+                <li>⚙️ <strong>Building clean, scalable, efficient APIs:</strong> If your codebase gives a migraine to the next developer, you have not done a fair job.</li>
+                <li>🔍 <strong>Code reviews & sprint planning:</strong> My MBA taught me to find tasks that deliver maximum impact - sometimes refactoring bloated code is key.</li>
+                <li>✅ <strong>Keeping test cases up to date:</strong> Tests aren't optional — they're the confidence check before shipping to production.</li>
+                <li>🧠 <strong>Building LLM-based features:</strong> Cactus uses my wrapper to safely manage LLM calls — no direct API key exposure. "We know a guy who knows a guy."</li>
+                <li>🚀 <strong>Optimizing APIs:</strong> Latency improvement is every developer's hell, but it's probably the most satisfying work. Asyncio for the win!</li>
+                <li>🧱 <strong>System design & architecture:</strong> I believe in clear structure — design diagrams don’t lie; they reveal what’s missing early.</li>
+                <li>☁️ <strong>Cloud technologies:</strong> Comfortable with AWS & containers. Infrastructure as Code (Terraform) is second nature.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="tech-stack" class="py-20 md:py-32 bg-white/70 scroll-animate">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">My Tech Stack 🛠️</h2>
+            <p class="text-lg text-center text-gray-600 mb-16 max-w-3xl mx-auto">The tools and technologies I work with daily.</p>
+            
+            <div class="max-w-4xl mx-auto space-y-12 light-card p-8 md:p-10">
+                <div>
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-laptop-code"></i> Languages & Frameworks</h3>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <img src="https://img.shields.io/badge/-Python-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" class="h-10"/>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-cogs"></i> DevOps & Cloud</h3>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <img src="https://img.shields.io/badge/-Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" alt="Terraform" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-AWS-232F3E?style=for-the-badge&logo=amazon-aws&logoColor=white" alt="AWS" class="h-10"/>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-tools"></i> Tools & Collaboration</h3>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <img src="https://img.shields.io/badge/-GitHub-181717?style=for-the-badge&logo=github&logoColor=white" alt="GitHub" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-Slack-4A154B?style=for-the-badge&logo=slack&logoColor=white" alt="Slack" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-Jira-0052CC?style=for-the-badge&logo=jira&logoColor=white" alt="Jira" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-Confluence-172B4D?style=for-the-badge&logo=confluence&logoColor=white" alt="Confluence" class="h-10"/>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-2xl font-semibold text-teal-700 mb-5 text-center md:text-left flex items-center gap-2 justify-center md:justify-start"><i class="fas fa-brain"></i> AI/ML & LLMs</h3>
+                    <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                        <img src="https://img.shields.io/badge/-LLMs-ffcc00?style=for-the-badge&logo=openai&logoColor=black" alt="LLMs" class="h-10"/>
+                        <img src="https://img.shields.io/badge/-Prompt%20Engineering-5e5e5e?style=for-the-badge&logo=OpenAI&logoColor=white" alt="Prompt Engineering" class="h-10"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="game" class="py-20 md:py-32 scroll-animate">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-4 text-gradient bg-gradient-to-r from-teal-500 to-orange-500">Quick Click Challenge! 🎯</h2>
+            <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto">Test your reflexes! Click the red target as many times as you can in 15 seconds.</p>
+            
+            <div id="game-area" class="light-card p-6 md:p-8">
+                <div class="flex justify-around items-center mb-6 text-xl font-semibold">
+                    <div>Time Left: <span id="time-left" class="text-orange-600">15</span>s</div>
+                    <div>Score: <span id="score" class="text-teal-600">0</span></div>
+                </div>
+                <div id="game-container">
+                    <div id="target"></div>
+                </div>
+                <div class="game-controls mt-6">
+                    <button id="start-game-btn">Start Game</button>
+                    <p id="game-message" class="mt-4 text-gray-600 h-6"></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-20 md:py-32 bg-white/70 scroll-animate">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-4 text-gradient bg-gradient-to-r from-orange-500 to-teal-500">Get In Touch 📬</h2>
+            <p class="text-lg text-center text-gray-600 mb-12 max-w-2xl mx-auto">Have a project, a question, or just want to connect? I'd love to hear from you!</p>
+            
+            <div class="max-w-xl mx-auto light-card p-8 md:p-10">
+                <form action="#" method="POST"> <div class="mb-6">
+                        <label for="name" class="block mb-2 text-sm font-medium text-teal-700">Full Name</label>
+                        <input type="text" id="name" name="name" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="Your Name" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block mb-2 text-sm font-medium text-teal-700">Email Address</label>
+                        <input type="email" id="email" name="email" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="you@example.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block mb-2 text-sm font-medium text-teal-700">Message</label>
+                        <textarea id="message" name="message" rows="4" class="bg-gray-50 border border-gray-300 text-gray-800 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block w-full p-3 placeholder-gray-400" placeholder="Your message..." required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn-primary text-lg w-full sm:w-auto">Send Message <i class="fas fa-paper-plane ml-2"></i></button>
+                    </div>
+                </form>
+                <div class="mt-10 text-center text-gray-700">
+                    <p class="mb-2 text-lg">Or reach me directly:</p>
+                    <p class="mb-1"><i class="fas fa-envelope mr-2 text-teal-600"></i>Email: <a href="mailto:jainaviral25@gmail.com" class="text-teal-600 hover:underline">jainaviral25@gmail.com</a></p>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt mr-2 text-orange-500"></i>Location: Noida, Delhi NCR, India 🇮🇳</p>
+                    <p><i class="fab fa-linkedin mr-2 text-blue-600"></i>LinkedIn: <a href="https://www.linkedin.com/in/aviral-jain-6190b9133/" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:underline">linkedin.com/in/aviral-jain</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 bg-slate-200 border-t border-gray-300">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-700">&copy; <span id="currentYear"></span> Aviral Jain. All rights reserved.</p>
+            <p class="text-sm text-gray-600 mt-1">Crafted with <span class="text-red-500 animate-pulse">&hearts;</span> and Tailwind CSS.</p>
+            <div class="mt-4 space-x-6">
+                <a href="https://www.linkedin.com/in/aviral-jain-6190b9133/" target="_blank" rel="noopener noreferrer" class="text-gray-600 hover:text-blue-600 transition-colors duration-300 text-xl"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-xl"><i class="fab fa-github"></i> <span class="text-xs">(Your GitHub)</span></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Set current year in footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Simple scroll animation trigger
+        const scrollElements = document.querySelectorAll('.scroll-animate');
+        const elementInView = (el, dividend = 1) => {
+            const elementTop = el.getBoundingClientRect().top;
+            return ( elementTop <= (window.innerHeight || document.documentElement.clientHeight) / dividend );
+        };
+        const displayScrollElement = (element) => { element.classList.add('in-view'); };
+        const handleScrollAnimation = () => {
+            scrollElements.forEach((el) => {
+                if (elementInView(el, 1.20)) { // Adjust dividend for when animation triggers
+                    displayScrollElement(el);
+                }
+            });
+        };
+        window.addEventListener('scroll', handleScrollAnimation);
+        document.addEventListener('DOMContentLoaded', () => { // Ensure it runs on load
+            handleScrollAnimation(); // Initial check
+        });
+
+        // Game Logic for "Quick Click Challenge"
+        const gameContainer = document.getElementById('game-container');
+        const target = document.getElementById('target');
+        const scoreDisplay = document.getElementById('score');
+        const timeLeftDisplay = document.getElementById('time-left');
+        const startGameBtn = document.getElementById('start-game-btn');
+        const gameMessage = document.getElementById('game-message');
+
+        let score = 0;
+        let timeLeft = 15;
+        let gameInterval;
+        let gameActive = false;
+
+        function moveTarget() {
+            if (!gameActive) return;
+            const containerWidth = gameContainer.offsetWidth;
+            const containerHeight = gameContainer.offsetHeight;
+            const targetWidth = target.offsetWidth;
+            const targetHeight = target.offsetHeight;
+
+            const randomX = Math.random() * (containerWidth - targetWidth);
+            const randomY = Math.random() * (containerHeight - targetHeight);
+
+            target.style.left = randomX + 'px';
+            target.style.top = randomY + 'px';
+            target.style.display = 'block';
+        }
+
+        function updateScore() {
+            score++;
+            scoreDisplay.textContent = score;
+        }
+
+        function startGame() {
+            if (gameActive) return;
+            gameActive = true;
+            score = 0;
+            timeLeft = 15;
+            scoreDisplay.textContent = score;
+            timeLeftDisplay.textContent = timeLeft;
+            startGameBtn.disabled = true;
+            startGameBtn.textContent = "Game On!";
+            gameMessage.textContent = "";
+            target.style.display = 'block';
+
+
+            moveTarget(); // Initial placement
+
+            gameInterval = setInterval(() => {
+                timeLeft--;
+                timeLeftDisplay.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    endGame();
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            clearInterval(gameInterval);
+            gameActive = false;
+            target.style.display = 'none';
+            startGameBtn.disabled = false;
+            startGameBtn.textContent = "Play Again?";
+            gameMessage.textContent = `Game Over! Your final score: ${score}`;
+        }
+
+        target.addEventListener('click', () => {
+            if (gameActive) {
+                updateScore();
+                moveTarget();
+            }
+        });
+
+        startGameBtn.addEventListener('click', startGame);
+        
+        // Initially hide target until game starts
+        target.style.display = 'none';
+
+    </script>
+
+</body>
 </html>
